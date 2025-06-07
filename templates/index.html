@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Microsoft Identity Python Web App: Index</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        header {
+            background: #111;
+            padding: 1.5rem 0;
+            text-align: center;
+            border-bottom: 2px solid #00c3ff;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            color: #00c3ff;
+            text-shadow: 0 2px 8px #000a;
+        }
+        h2 {
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+            color: #fff;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 2rem auto;
+            max-width: 400px;
+            background: #222c;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px #0004;
+        }
+        ul li {
+            margin: 0;
+            border-bottom: 1px solid #333;
+        }
+        ul li:last-child {
+            border-bottom: none;
+        }
+        a {
+            display: block;
+            padding: 1rem;
+            color: #00c3ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+        }
+        a:hover, a:focus {
+            background: #00c3ff22;
+            color: #fff;
+        }
+        .cyber-lock {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .cyber-lock svg {
+            width: 60px;
+            height: 60px;
+            fill: #00c3ff;
+            filter: drop-shadow(0 0 8px #00c3ff88);
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #444;
+            margin: 2rem 0 1rem 0;
+        }
+        footer {
+            text-align: right;
+            color: #888;
+            font-size: 0.95rem;
+            padding: 1rem 2rem;
+        }
+        @media (max-width: 600px) {
+            ul {
+                max-width: 95vw;
+            }
+            footer {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Oluwaseun Ayodeji BootCon Presentation</h1>
+    </header>
+    <div class="cyber-lock">
+        <!-- Cybersecurity lock SVG icon -->
+        <svg viewBox="0 0 64 64" aria-label="Cybersecurity Lock">
+            <rect x="16" y="28" width="32" height="24" rx="6" fill="#111c" stroke="#00c3ff" stroke-width="2"/>
+            <rect x="24" y="36" width="16" height="12" rx="3" fill="#222"/>
+            <circle cx="32" cy="42" r="3" fill="#00c3ff"/>
+            <rect x="28" y="16" width="8" height="16" rx="4" fill="#222"/>
+            <ellipse cx="32" cy="20" rx="10" ry="10" fill="none" stroke="#00c3ff" stroke-width="2"/>
+        </svg>
+    </div>
+    <h2>Welcome {{ user.get("name") }}!</h2>
+
+    <ul>
+    {% if config.get("ENDPOINT") %}
+      <li><a href='/call_downstream_api'>Call a downstream API</a></li>
+    {% endif %}
+
+    {% if config.get("B2C_PROFILE_AUTHORITY") %}
+      <li><a href='{{config.get("B2C_PROFILE_AUTHORITY")}}?client_id={{config.get("CLIENT_ID")}}'>Edit Profile</a></li>
+    {% endif %}
+
+    <li><a href="/logout">Logout</a></li>
+    </ul>
+
+    <hr>
+    <footer>Jury for Breached System {{ version }} | <span style="color:#00c3ff;">Cybersecurity First</span></footer>
+</body>
+</html>
+
